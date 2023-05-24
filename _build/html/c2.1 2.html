@@ -472,7 +472,7 @@ Note: $\eta_i = \beta_0 + \beta_1x_{i1} = \boldsymbol{x_i}^\top \boldsymbol{\bet
 <div class="math notranslate nohighlight" id="equation-log-like">
 <span class="eqno">()<a class="headerlink" href="#equation-log-like" title="Permalink to this equation">#</a></span>\[\begin{split}l(\boldsymbol{\beta} | \boldsymbol{y}, \boldsymbol{X}) &amp;= \sum_{i=1}^{n} \left[y_i \log p_i + (1 - y_i) \log (1 - p_i)\right]\\
 l(\boldsymbol{\beta} | \boldsymbol{y}, \boldsymbol{X}) &amp;= \sum_{i=1}^{n} y_i \log \left(\frac{1}{1 + e^{-\boldsymbol{x_i}^\top \boldsymbol{\beta}}}\right) + (1 - y_i) \log \left(\frac{e^{-\boldsymbol{x_i}^\top \boldsymbol{\beta}}}{1 + e^{-\boldsymbol{x_i}^\top \boldsymbol{\beta}}}\right)\end{split}\]</div>
-<p>This transformation is done with <a class="reference internal" href="#equation-p-and-e">()</a></p>
+<p>This transformation is done with <a class="reference internal" href="smds/c2.1%202.html#equation-p-and-e">()</a></p>
 </div>
 <div class="section" id="score-function">
 <h4>Score function<a class="headerlink" href="#score-function" title="Permalink to this heading">#</a></h4>
@@ -488,14 +488,14 @@ l(\boldsymbol{\beta} | \boldsymbol{y}, \boldsymbol{X}) &amp;= \sum_{i=1}^{n} y_i
 </div>
 <div class="section" id="observed-information">
 <h4>Observed information<a class="headerlink" href="#observed-information" title="Permalink to this heading">#</a></h4>
-<p>Negative Hessian function <a class="reference internal" href="#equation-hf">()</a>
+<p>Negative Hessian function <a class="reference internal" href="smds/c2.1%202.html#equation-hf">()</a>
 $$
 \boldsymbol{I}(\boldsymbol{\beta} | \boldsymbol{X}) = -\frac{\partial^2 \boldsymbol{l}(\boldsymbol{\beta} | \boldsymbol{y}, \boldsymbol{X})}{\partial \boldsymbol{\beta} \partial \boldsymbol{\beta}^\top} = \sum_{i=1}^{n} p_i (1-p_i) \boldsymbol{x_i} \boldsymbol{x_i}^\top
 $$</p>
 </div>
 <div class="section" id="fisher-information">
 <h4>Fisher information<a class="headerlink" href="#fisher-information" title="Permalink to this heading">#</a></h4>
-<p>Negative Expetation of Hessian function <a class="reference internal" href="#equation-hf">()</a></p>
+<p>Negative Expetation of Hessian function <a class="reference internal" href="smds/c2.1%202.html#equation-hf">()</a></p>
 <div class="math notranslate nohighlight" id="equation-fi">
 <span class="eqno">()<a class="headerlink" href="#equation-fi" title="Permalink to this equation">#</a></span>\[\boldsymbol{J}(\boldsymbol{\beta} | \boldsymbol{X}) = \mathbb{E} \left[ -\frac{\partial^2 \log f(\boldsymbol{y} | \boldsymbol{X}, \boldsymbol{\beta})}{\partial \boldsymbol{\beta} \partial \boldsymbol{\beta}^\top} \right] = \mathbb{E} \left[ \sum_{i=1}^{n} p_i (1-p_i) \boldsymbol{x_i} \boldsymbol{x_i}^\top \righLEt]\]</div>
 <div class="admonition tip">
@@ -511,7 +511,7 @@ $$
 $$
 \boldsymbol{\beta}^{(t+1)} = \boldsymbol{\beta}^{(t)} + \left(\boldsymbol{J}(\boldsymbol{\beta}^{(t)})\right)^{-1} \boldsymbol{u}(\boldsymbol{\beta}^{(t)})
 $$
-Where J is fisher information <a class="reference internal" href="#equation-fi">()</a>, u is score function<a class="reference internal" href="#equation-sf">()</a></p>
+Where J is fisher information <a class="reference internal" href="smds/c2.1%202.html#equation-fi">()</a>, u is score function<a class="reference internal" href="smds/c2.1%202.html#equation-sf">()</a></p>
 </div>
 <hr class="docutils" />
 <div class="section" id="how-to-find-mle-chatgpt">
@@ -590,7 +590,7 @@ ggplot(wcgs, aes(x=cigs, color=chd)) + geom_histogram(position=&quot;dodge&quot;
 <blockquote>
 <div><p>In R, adding jitter to a plot means adding a small amount of random noise to the data points to help visualize overlapping points. This can be useful when visualizing categorical or discrete data, as it can help distinguish data points that are otherwise indistinguishable due to their exact values being the same.</p>
 </div></blockquote>
-<p>Here is a <a class="reference internal" href="intro.html"><span class="doc std std-doc">reference to the intro</span></a>. Here is a reference to <a class="reference internal" href="mymarkdown.html#section-label"><span class="std std-ref">Here’s my first section</span></a>.1</p>
+<p>Here is a <a class="reference internal" href="intro.html"><span class="doc std std-doc">reference to the intro</span></a>. Here is a reference to <a class="reference internal" href="smds/mymarkdown.html#section-label"><span class="std std-ref">Here’s my first section</span></a>.1</p>
 </div>
 </div>
 </div>

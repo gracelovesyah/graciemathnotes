@@ -164,12 +164,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="c2.2.html">2.2 Interpretation &amp; Hypothesis &amp; CI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c2.4.html">2.4 Diagnostic in binary regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="c2.5.html">2.5 Model selection in logistic regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="c2.6.html">2.6 Goodness of fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2.6.html">2.6 Goodness of fit &amp; $\chi^2$ Test</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Chapter3_GLM.html">Chapter 3 GLM</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="c3.1.html">3.1 Intro</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="c3.2.html">3.2 Model Adeuqacy &amp; Model Comparison</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="Chapter4_Categorical_Data_Analysis_by_Logistic_Regression_Models.html">Chapter 4 Categorical Data Analysis by Logistic Regression Models</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -180,12 +181,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Chapter5_Analysis_of_Contingency_Tables_by_Log_Linear_Models.html">Chapter 5 Analysis of Contingency Tables by Log Linear Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="notebooks.html">Content with notebooks</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Practicals.html">Practicals</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Practicals.html">Practicals</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="tut1.html">Prac1</a></li>
 
 
@@ -527,9 +523,9 @@ $$</p>
 </div>
 <div class="section" id="code">
 <h3>Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vote</span><span class="mf">.1</span> <span class="o">&lt;-</span> <span class="n">glm</span><span class="p">(</span><span class="n">reagan</span><span class="o">/</span><span class="n">total</span> <span class="o">~</span> <span class="n">views</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="n">binomial</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">total</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">vote</span><span class="o">.</span><span class="n">dat</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vote</span><span class="o">.</span><span class="mi">1</span> <span class="o">&lt;-</span> <span class="n">glm</span><span class="p">(</span><span class="n">reagan</span><span class="o">/</span><span class="n">total</span> <span class="o">~</span> <span class="n">views</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="n">binomial</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">total</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">vote</span><span class="o">.</span><span class="n">dat</span><span class="p">)</span>
 
-<span class="n">summary</span><span class="p">(</span><span class="n">vote</span><span class="mf">.1</span><span class="p">)</span>
+<span class="n">summary</span><span class="p">(</span><span class="n">vote</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
 
 </pre></div>
 </div>
