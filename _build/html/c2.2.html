@@ -494,7 +494,7 @@ $$S = \frac{\partial \ell(\boldsymbol{\theta})/\partial \beta}{\sqrt{\mathrm{Var
 <span class="eqno">(7)<a class="headerlink" href="#equation-deviance" title="Permalink to this equation">#</a></span>\[\begin{split}D(\boldsymbol{\beta}) &amp;= -2\big[\log L(\boldsymbol{\beta}) - \log L(\boldsymbol{0})\big] \\
 &amp;= -2 [\sum_{i=1}^{n} y_i \ln \left( \frac{\hat{y}_i}{y_i} \right) + (1-y_i) \ln \left( \frac{1-\hat{y}_i}{1-y_i} \right)] \\
 &amp;= -2[\sum_{i=1}^n \left[ y_i\log\left({p_i}\right) + (1-y_i)\log\left({1-p_i}\right)\right]]\end{split}\]</div>
-<p>The log-likelihood function can be seen at <a class="reference internal" href="smds/c2.1%202.html#equation-log-like">()</a></p>
+<p>The log-likelihood function can be seen at <code class="xref eq docutils literal notranslate"><span class="pre">log-like</span></code></p>
 <div class="admonition-deviance-vs-residual-deviance admonition">
 <p class="admonition-title">Deviance vs Residual Deviance</p>
 <p>In other examples of GLMs, the deviance is a measure of how well the model fit the data. But in the case where the response is binary, the deviance cannot be used for measuring goodness of fit, because the deviance is just a function of pi ’s</p>
@@ -653,12 +653,82 @@ AIC: 85.909
 </div>
 <p>given that 1-pchisq(8.076, 9) = 0.5265058</p>
 <div class="dropdown admonition">
-<p class="admonition-title">What can we interpret?</p>
+<p class="admonition-title">What can we interpret from Resid. Dev?</p>
 <p>model4 CHD ~ CHOL + BP. Small Resid.Dev &lt;=&gt; big p-value &lt;=&gt;  model adequate &lt;=&gt; no significant association between CHOL &amp; BP.</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">How to interpret the table?</p>
+<blockquote>
+<div><p>ChatGPT-based Answer</p>
+</div></blockquote>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> This is an analysis of deviance table for a binomial logistic regression model. Here&#39;s what the columns mean:
+
+ Df: This stands for degrees of freedom. It refers to the number of independent pieces of information that go into the estimate of a parameter or parameters. In this case, it&#39;s the number of parameters for each term in your model.
+
+ Deviance: This is the contribution to the overall model deviance by the variable(s) added at each step. It&#39;s essentially a measure of how much the likelihood improves when the variables are added to the model.
+
+ Resid. Df (Residual Degrees of Freedom): This is the number of degrees of freedom left over after accounting for the variables in the model. It&#39;s the total number of observations minus the number of parameters estimated.
+
+ Resid. Dev (Residual Deviance): This is the remaining unexplained deviance after accounting for the variables in the model. Lower values indicate a better fit.
+
+ Here&#39;s how to interpret the table:
+
+ The first row (NULL) shows the deviance for the null model, which includes only the intercept and no predictors. Here, the Resid. Df is 15, and the Resid. Dev is 58.726.
+
+ The second row (CHOL) shows what happens when you add the predictor &quot;CHOL&quot; to the model. The deviance decreases by 31.921, the Resid. Df decreases to 12, and the Resid. Dev decreases to 26.805.
+
+ The third row (BP) shows what happens when you add the predictor &quot;BP&quot; to the model already containing &quot;CHOL&quot;. The deviance decreases by 18.729, the Resid. Df decreases to 9, and the Resid. Dev decreases to 8.076.
+
+ The fact that the deviance is decreasing as you add predictors indicates that these predictors are improving the fit of the model, which is a good thing. The goal in a GLM is to explain as much deviance as possible with your predictors.
+</pre></div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">How is each term calculated?</p>
+<blockquote>
+<div><p>ChatGPT</p>
+</div></blockquote>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> In a binomial logistic regression, deviance is calculated based on the likelihood of the model, and each value in the analysis of deviance table is computed in a certain way. 
+
+ The deviance for a given model is calculated as:
+
+ `Deviance = -2 * log(Likelihood of the model)`
+
+ Where &quot;Likelihood of the model&quot; is the likelihood of observing the data given the parameters of the model.
+
+ The deviance for the &quot;NULL&quot; model (a model with no predictors) is calculated first, and the residual deviance for this model is equal to the deviance because no predictors have been added yet.
+
+ When predictors are added to the model (like &quot;CHOL&quot; and &quot;BP&quot; in your example), the deviance for the new model is calculated. The change in deviance, or the deviance contributed by the predictor, is the deviance of the null model minus the deviance of the new model:
+
+ `Deviance contributed by predictor = Deviance(NULL model) - Deviance(new model)`
+
+ The residual deviance after adding the predictor is simply the deviance of the new model:
+
+ `Residual Deviance = Deviance(new model)`
+
+ The residual degrees of freedom (Resid. Df) is the number of observations minus the number of parameters estimated in the new model. If there were originally n observations and you&#39;ve added k predictors (including the intercept), then:
+
+ `Resid. Df = n - k`
+
+ These calculations are performed sequentially for each predictor added to the model. Each time, the new model includes all the predictors added so far, the deviance contributed by the new predictor is calculated as the difference in deviance between the new model and the previous model, and the residual deviance is updated to the deviance of the new model.
+</pre></div>
+</div>
 </div>
 <div class="dropdown admonition">
 <p class="admonition-title">What if the Resid. Dev is big?</p>
 <p>Model inadequate &lt;=&gt; there is a significant association between CHOL &amp; BP.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>What is the reason for not using deviance as a measure of fit for binary response generalised linear models (GLMs)?</p>
+<p>Because the exact probability distribution of the deviance in this case is very difficult to find and is poorly approximated by a chi-square distribution.</p>
+<p>Additionally, the R output do not contain Residual  Deviance of Full Model. (only null model). So no results can be drawn. IF we have the residual deviance of full model. We can test the adequacy of a certain model by comparing its deviance with residual deviance of full model.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Difference between Deviance Residual and Residual Deviance?</p>
+<p>Deviance Residual: How many deviance can the added variable explain (same as Change in Deviance) [31.921] (bigger, better)</p>
+<p>Residual Deviance: How many deviance still uninterpreted (after adding that variable. ) [26.805] (smaller, better)</p>
 </div>
 </div>
 <div class="section" id="test-significance-of-predictor-coding">
@@ -767,7 +837,7 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 <h2>Confidence Interval<a class="headerlink" href="#confidence-interval" title="Permalink to this heading">#</a></h2>
 <div class="section" id="confidence-interval-for-beta">
 <h3>Confidence Interval for $\beta$<a class="headerlink" href="#confidence-interval-for-beta" title="Permalink to this heading">#</a></h3>
-<p>Reminder of our fomualr <a class="reference internal" href="smds/c2.2%202.html#equation-chd">()</a>:</p>
+<p>Reminder of our fomualr <a class="reference internal" href="#equation-chd">(6)</a>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}log\frac{p}{1-p} &amp;= -4.502 + 0.025 × height + 0.023 × cigs \\\end{split}\]</div>
 <p>where p is the probability of getting coronary heart disease</p>
